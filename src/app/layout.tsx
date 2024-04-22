@@ -4,8 +4,8 @@ import "./styles/all.scss";
 import { cookies } from 'next/headers'
 
 // Components
-import BootTrigger from './bootTrigger/page';
-import BootLoaderAnimation from './bootLoaderAnimation/page';
+import BootTrigger from './BootTrigger/page';
+import BootLoaderAnimation from './BootLoaderAnimation/page';
 import OSInfo from './OSInfo/page';
 import Initiating from './Initiating/page';
 
@@ -21,11 +21,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = cookies();
-  const myCookieValue = cookieStore.get('bootedPreviously');
+  const bootedPreviously = cookies().get("bootedPreviously")
 
   // Check if the cookie exists and its value
-  if (typeof myCookieValue === 'string' && myCookieValue === 'true') {
+  if (bootedPreviously) {
     return (
       <html lang="en">
         <body className={inter.className}>
@@ -36,31 +35,30 @@ export default function RootLayout({
           </div>
         </body>
       </html>
-    );
-  } else {
-    return (
-      <html lang="en">
-        <body className={inter.className}>
-          <div className="container">
-            <div className="landing">
-              <BootTrigger />
-            </div>
-            <div className="hide step-1">
-              <BootLoaderAnimation />
-            </div>
-            <div className="hide step-2">
-              <OSInfo />
-            </div>
-            <div className="hide step-3 initiating">
-              <Initiating />
-            </div>
-            <div className="hide dashboard">
-              {children}
-            </div>
-          </div>
-        </body>
-      </html>
-    );
+    )
   }
 
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <div className="container">
+          <div className="landing">
+            <BootTrigger />
+          </div>
+          <div className="hide step-1">
+            <BootLoaderAnimation />
+          </div>
+          <div className="hide step-2">
+            <OSInfo />
+          </div>
+          <div className="hide step-3 initiating">
+            <Initiating />
+          </div>
+          <div className="hide dashboard">
+            {children}
+          </div>
+        </div>
+      </body>
+    </html>
+  );
 }
