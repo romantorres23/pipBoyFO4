@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Cookies from 'universal-cookie';
 
 // Images
 import joinVaulttec from '../assets/images/join.png';
@@ -83,10 +84,15 @@ export default function Page() {
     setTimerforpipboy();
   };
   const sequenceFour = () => {
-    const stepFour = document.querySelector(".step-4");
+    const stepFour = document.querySelector(".dashboard");
 
     if (stepFour) {
+      const cookies = new Cookies();
+      const oneDay = 24 * 60 * 60 * 1000; // in milliseconds
+      const expirationDate = new Date(Date.now() + oneDay); // Current time + 1 day
+  
       stepFour.classList.toggle("hide");
+      cookies.set('bootedPreviously', 'true', { path: '/', expires: expirationDate });
     }
   };
 
