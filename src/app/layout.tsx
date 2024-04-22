@@ -1,15 +1,11 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./styles/all.scss";
 import { cookies } from 'next/headers'
+import type { Metadata } from "next";
+import "./styles/all.scss";
 
-// Components
 import BootTrigger from './BootTrigger/page';
 import BootLoaderAnimation from './BootLoaderAnimation/page';
 import OSInfo from './OSInfo/page';
 import Initiating from './Initiating/page';
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Pip-Boy 3000",
@@ -23,11 +19,10 @@ export default function RootLayout({
 }>) {
   const bootedPreviously = cookies().get("bootedPreviously")
 
-  // Check if the cookie exists and its value
   if (bootedPreviously) {
     return (
       <html lang="en">
-        <body className={inter.className}>
+        <body>
           <div className="container">
             <div className="dashboard">
               {children}
@@ -40,7 +35,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <div className="container">
           <div className="landing">
             <BootTrigger />
