@@ -8,7 +8,7 @@ import joinVaulttec from '../assets/images/join.png';
 
 export default function Page() {
   const startBootSequence = () => {
-    const landing: HTMLElement | null = document.querySelector('.step-0');
+    const landing: HTMLElement | null = document.querySelector('.landing');
     const stepOne: HTMLElement | null = document.querySelector('.step-1');
 
     if (landing) {
@@ -90,14 +90,14 @@ export default function Page() {
       const cookies = new Cookies();
       const oneDay = 24 * 60 * 60 * 1000; // in milliseconds
       const expirationDate = new Date(Date.now() + oneDay); // Current time + 1 day
-  
+
       stepFour.classList.toggle("hide");
       cookies.set('bootedPreviously', 'true', { path: '/', expires: expirationDate });
     }
   };
 
   return (
-    <div className="step-0">
+    <>
       <Image
         src={joinVaulttec}
         alt="Join the Vault-tec"
@@ -106,6 +106,6 @@ export default function Page() {
       />
       <button className="crt join-vaulttec-btn"
         onClick={startBootSequence}>JOIN</button>
-    </div>
+    </>
   );
 }
