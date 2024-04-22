@@ -13,7 +13,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="navbar crt">
+      <div className="navbar styled-text">
         <ul className="navbar-main">
           <li><a href="#">STAT</a></li>
           <li><a href="#">INV</a></li>
@@ -37,7 +37,7 @@ export default function Page() {
           />
         </div>
         <div className="footer">
-          <ul className="crt navbar-buttons">
+          <ul className="styled-text navbar-buttons">
             <li>STIMPAK(1)</li>
             <li>RADAWAY(0)</li>
           </ul>

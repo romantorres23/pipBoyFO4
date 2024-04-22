@@ -179,6 +179,10 @@
   }
 }
 
+.animate-initiating-1 {
+  animation: blink 1s infinite linear 0.1s alternate;
+}
+
 .animate-typing-1 {
   border-right: 0.5em solid transparent;
   white-space: nowrap;

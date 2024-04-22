@@ -16,7 +16,6 @@ export default function Page() {
     }
     if (stepOne) {
       stepOne.classList.toggle('hide');
-      // Get bootloader entries to remove class hide - display individual boot entry
       const bootloadEntries = document.querySelectorAll<HTMLElement>('.bootload-entry');
 
       for (let index = 0; index < bootloadEntries.length; index++) {
@@ -33,24 +32,22 @@ export default function Page() {
           }
 
           if (index === bootloadEntries.length - 1) {
-            // set the end status for the step 1 animation here..
             setTimeout(() => {
               const stepOne = document.querySelector('.step-1') as HTMLElement;
               if (stepOne) {
                 stepOne.classList.toggle('hide');
                 sequenceTwo();
               }
-            }, 100);
+            }, 1000);
           }
 
           bootloadEntry.scrollIntoView();
-        }, 10 * index);
+        }, 100 * index);
       }
 
     }
   };
   const sequenceTwo = () => {
-    // Using animationend event listener to mark the end of animation
     const stepTwo = document.querySelector('.step-2') as HTMLElement;
 
     stepTwo.classList.toggle("hide");
@@ -98,14 +95,8 @@ export default function Page() {
 
   return (
     <>
-      <Image
-        src={joinVaulttec}
-        alt="Join the Vault-tec"
-        className="join-vaulttec-img"
-        priority
-      />
-      <button className="crt join-vaulttec-btn"
-        onClick={startBootSequence}>JOIN</button>
+      <button className="styled-text initialize-btn"
+        onClick={startBootSequence}>Initiate Pip-Boy</button>
     </>
   );
 }

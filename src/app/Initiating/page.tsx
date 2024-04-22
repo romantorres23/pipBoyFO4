@@ -11,12 +11,12 @@ export default function OSInfo() {
         <Image
           src={successGif}
           alt="Success"
-          className="crt pipboy-success"
+          className="styled-text pipboy-success"
           priority
         />
       </div>
       <div className="center-initiating-text pipboy-initiating-text">
-        <span className="animate-initiating-1">INITIATING</span>
+        <span className="animate-initiating-1">Initiating</span>
         <span className="animate-initiating-1">.</span>
       </div>
     </>
